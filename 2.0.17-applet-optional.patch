@@ -1,0 +1,32 @@
+--- origsrc/gnome-pilot-2.0.17/configure.in	2008-10-06 16:45:30.000000000 -0500
++++ src/gnome-pilot-2.0.17/configure.in	2010-06-10 23:53:52.314241500 -0500
+@@ -180,8 +180,9 @@ AC_SUBST(GNOME_PILOT_LIBS)
+ PKG_CHECK_MODULES(PILOT_APPLET,
+ [
+ 	$LIBPANELAPPLET_REQUIRED
+-])
++],with_applet=yes,with_applet=no)
+ 
++AM_CONDITIONAL(BUILD_APPLET, test "x$with_applet" = "xyes")
+ AC_SUBST(PILOT_APPLET_CFLAGS)
+ AC_SUBST(PILOT_APPLET_LIBS)
+ 
+--- origsrc/gnome-pilot-2.0.17/Makefile.am	2008-10-06 15:01:13.000000000 -0500
++++ src/gnome-pilot-2.0.17/Makefile.am	2010-06-10 23:55:21.971369600 -0500
+@@ -4,12 +4,15 @@ SUBDIRS = 			\
+ 	po 			\
+ 	idl 			\
+ 	gpilotd 		\
+-	applet			\
+ 	capplet 		\
+ 	conduits 		\
+ 	utils			\
+ 	help
+ 
++if BUILD_APPLET
++SUBDIRS += applet
++endif
++
+ pkglibdir=$(libdir)/pkgconfig
+ pkglib_DATA=gnome-pilot-2.0.pc
+ 
