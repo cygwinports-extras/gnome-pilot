@@ -1,5 +1,5 @@
 category: Gnome Utils
-requires: gnome-pilot libbonobo2-devel libglib2.0-devel libgnome2-devel libgnomeui2-devel libgnomevfs2-devel libgtk2.0-devel gettext libORBit2-devel libpisock-devel libxml2-devel
+requires: gnome-pilot libdbus-glib_1-devel libdbus1-devel libglib2.0-devel libgtk2.0-devel gettext libpisock-devel libxml2-devel
 external-source: gnome-pilot
 sdesc: "GNOME daemon for syncing PalmOS handhelds"
 ldesc: "Gnome-Pilot is a package with a daemon (gpilotd) that monitor

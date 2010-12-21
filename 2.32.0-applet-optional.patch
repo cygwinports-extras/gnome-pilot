@@ -1,0 +1,32 @@
+--- origsrc/gnome-pilot-2.32.0/Makefile.am	2010-08-09 03:02:10.000000000 -0500
++++ src/gnome-pilot-2.32.0/Makefile.am	2010-12-14 19:23:58.260330400 -0600
+@@ -3,12 +3,15 @@ ACLOCAL_AMFLAGS=-I macros
+ SUBDIRS = 			\
+ 	po 			\
+ 	gpilotd 		\
+-	applet			\
+ 	capplet 		\
+ 	conduits 		\
+ 	utils			\
+ 	help
+ 
++if BUILD_APPLET
++SUBDIRS += applet
++endif
++
+ pkglibdir=$(libdir)/pkgconfig
+ pkglib_DATA=gnome-pilot-2.0.pc
+ 
+--- origsrc/gnome-pilot-2.32.0/configure.ac	2010-09-26 03:37:02.000000000 -0500
++++ src/gnome-pilot-2.32.0/configure.ac	2010-12-14 19:24:32.595990300 -0600
+@@ -168,8 +168,9 @@ AC_SUBST(GNOME_PILOT_LIBS)
+ PKG_CHECK_MODULES(PILOT_APPLET,
+ [
+ 	$LIBPANELAPPLET_REQUIRED
+-])
++],with_applet=yes,with_applet=no)
+ 
++AM_CONDITIONAL(BUILD_APPLET, test "x$with_applet" = "xyes")
+ AC_SUBST(PILOT_APPLET_CFLAGS)
+ AC_SUBST(PILOT_APPLET_LIBS)
+ 
