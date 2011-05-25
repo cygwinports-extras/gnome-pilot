@@ -6,7 +6,7 @@ DESCRIPTION="GNOME Pilot-link interface"
 PATCH_URI="
 	2.32.0-applet-optional.patch
 	2.32.0-cygwin-conduit-shlibname.patch
-	2.32.0-no-undefined.patch
+	2.32.1-no-undefined.patch
 "
 
 PKG_NAMES="${PN} ${PN}-devel"
@@ -15,4 +15,5 @@ gnome_pilot_CONTENTS="--exclude=idl usr/bin/ usr/lib/${PN}/ usr/share/"
 gnome_pilot_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
 
 # make gpilotd easy to start from command line
-CYGCONF_ARGS="--libexecdir=/usr/bin"
+# eds-conduits: incompatible with e-d-s 3.0
+CYGCONF_ARGS="--libexecdir=/usr/bin --disable-eds-conduits"
