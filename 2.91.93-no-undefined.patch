@@ -1,0 +1,126 @@
+--- origsrc/gnome-pilot-2.91.93/conduits/backup/Makefile.am	2011-09-10 16:04:20.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/backup/Makefile.am	2011-09-26 01:36:55.114110400 -0500
+@@ -12,7 +12,7 @@ backup_conduits_LTLIBRARIES = \
+ 
+ libbackup_conduit_3_0_la_SOURCES = backup_conduit.c backup_conduit.h 
+ 
+-libbackup_conduit_3_0_la_LDFLAGS = -module -avoid-version
++libbackup_conduit_3_0_la_LDFLAGS = -module -avoid-version -no-undefined
+ libbackup_conduit_3_0_la_LIBADD = 	\
+ 	$(GNOME_PILOT_LIBS) \
+ 	$(top_builddir)/gpilotd/libgpilotdconduit-3.0.la
+--- origsrc/gnome-pilot-2.91.93/conduits/evolution-data-server/Makefile.am	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/evolution-data-server/Makefile.am	2011-09-26 02:06:21.171252500 -0500
+@@ -26,9 +26,11 @@ libeaddress_conduit_3_0_la_SOURCES = \
+ 	e-pilot-util.h
+ 
+ libeaddress_conduit_3_0_la_LDFLAGS = \
+-	-module -avoid-version
++	-module -avoid-version -no-undefined
+ 
+ libeaddress_conduit_3_0_la_LIBADD = \
++	$(top_builddir)/gpilotd/libgpilotdcm-3.0.la \
++	$(top_builddir)/gpilotd/libgpilotdconduit-3.0.la \
+ 	$(GNOME_PILOT_LIBS) \
+ 	$(EVOLUTION_DATA_SERVER_LIBS)
+ 
+@@ -44,9 +46,11 @@ libecalendar_conduit_3_0_la_SOURCES = \
+ 	e-pilot-util.h
+ 
+ libecalendar_conduit_3_0_la_LDFLAGS = \
+-	-module -avoid-version
++	-module -avoid-version -no-undefined
+ 
+ libecalendar_conduit_3_0_la_LIBADD = \
++	$(top_builddir)/gpilotd/libgpilotdcm-3.0.la \
++	$(top_builddir)/gpilotd/libgpilotdconduit-3.0.la \
+ 	$(LIBECAL_LIBS) \
+ 	$(EVOLUTION_DATA_SERVER_LIBS)
+ 
+@@ -62,9 +66,11 @@ libememo_conduit_3_0_la_SOURCES = \
+ 	e-pilot-util.h
+ 
+ libememo_conduit_3_0_la_LDFLAGS = \
+-	-module -avoid-version
++	-module -avoid-version -no-undefined
+ 
+ libememo_conduit_3_0_la_LIBADD = \
++	$(top_builddir)/gpilotd/libgpilotdcm-3.0.la \
++	$(top_builddir)/gpilotd/libgpilotdconduit-3.0.la \
+ 	$(LIBECAL_LIBS) \
+ 	$(EVOLUTION_DATA_SERVER_LIBS)
+ 
+@@ -80,9 +86,11 @@ libetodo_conduit_3_0_la_SOURCES = \
+ 	e-pilot-util.h
+ 
+ libetodo_conduit_3_0_la_LDFLAGS = \
+-	-module -avoid-version
++	-module -avoid-version -no-undefined
+ 
+ libetodo_conduit_3_0_la_LIBADD = \
++	$(top_builddir)/gpilotd/libgpilotdcm-3.0.la \
++	$(top_builddir)/gpilotd/libgpilotdconduit-3.0.la \
+ 	$(GNOME_PILOT_LIBS) \
+ 	$(EVOLUTION_DATA_SERVER_LIBS)
+ 
+--- origsrc/gnome-pilot-2.91.93/conduits/file/Makefile.am	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/file/Makefile.am	2011-09-26 01:37:19.138768600 -0500
+@@ -14,7 +14,7 @@ file_conduits_LTLIBRARIES = \
+ 
+ libfile_conduit_3_0_la_SOURCES = file_conduit.c file_conduit.h palm.keys.in
+ 
+-libfile_conduit_3_0_la_LDFLAGS = -module -avoid-version
++libfile_conduit_3_0_la_LDFLAGS = -module -avoid-version -no-undefined
+ libfile_conduit_3_0_la_LIBADD = 		\
+ 	$(GNOME_PILOT_LIBS)  \
+ 	$(top_builddir)/gpilotd/libgpilotdconduit-3.0.la
+--- origsrc/gnome-pilot-2.91.93/conduits/test/Makefile.am	2011-09-10 16:04:20.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/test/Makefile.am	2011-09-26 01:37:23.139575000 -0500
+@@ -12,7 +12,7 @@ test_conduits_LTLIBRARIES = \
+ libtest_conduit_3_0_la_SOURCES = 	\
+ 	test_conduit.c
+ 
+-libtest_conduit_3_0_la_LDFLAGS = -module -avoid-version
++libtest_conduit_3_0_la_LDFLAGS = -module -avoid-version -no-undefined
+ libtest_conduit_3_0_la_LIBADD = 	\
+ 	$(GNOME_PILOT_LIBS) \
+ 	$(top_builddir)/gpilotd/libgpilotdconduit-3.0.la
+--- origsrc/gnome-pilot-2.91.93/gpilotd/Makefile.am	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/gpilotd/Makefile.am	2011-09-26 01:38:59.562816900 -0500
+@@ -123,11 +123,12 @@ libgpilotdcminclude_HEADERS = \
+ 	gnome-pilot-conduit-config.h
+ 
+ libgpilotdcm_3_0_la_LIBADD =		\
++	libgpilotd-3.0.la		\
+ 	$(GNOME_PILOT_LIBS)		\
+ 	$(NULL)
+ 
+ libgpilotdcm_3_0_la_LDFLAGS = \
+-	-version-info $(GPILOTD_CM_CURRENT):$(GPILOTD_CM_REVISION):$(GPILOTD_CM_AGE)
++	-version-info $(GPILOTD_CM_CURRENT):$(GPILOTD_CM_REVISION):$(GPILOTD_CM_AGE) -no-undefined
+ 
+ ## LIBGPILOTD
+ 
+@@ -145,7 +146,7 @@ libgpilotd_3_0_la_LIBADD = \
+ 	$(NONE)
+ 
+ libgpilotd_3_0_la_LDFLAGS = \
+-	-version-info $(GPILOTD_CURRENT):$(GPILOTD_REVISION):$(GPILOTD_AGE)
++	-version-info $(GPILOTD_CURRENT):$(GPILOTD_REVISION):$(GPILOTD_AGE) -no-undefined
+ 
+ ## LIBGPILOTDCONDUIT
+ libgpilotdconduit_3_0_la_SOURCES = 			\
+@@ -175,11 +176,12 @@ libgpilotdconduitinclude_HEADERS = 		\
+ libgpilotdconduitincludedir = $(includedir)/gnome-pilot-3.0
+ 
+ libgpilotdconduit_3_0_la_LIBADD =	\
++	libgpilotd-3.0.la	\
+ 	$(GNOME_PILOT_LIBS)	\
+ 	$(NULL)
+ 
+ libgpilotdconduit_3_0_la_LDFLAGS = \
+-	-version-info $(GPILOTD_CONDUIT_CURRENT):$(GPILOTD_CONDUIT_REVISION):$(GPILOTD_CONDUIT_AGE)
++	-version-info $(GPILOTD_CONDUIT_CURRENT):$(GPILOTD_CONDUIT_REVISION):$(GPILOTD_CONDUIT_AGE) -no-undefined
+ 
+ ###
+ 

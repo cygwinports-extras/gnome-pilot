@@ -1,0 +1,52 @@
+--- origsrc/gnome-pilot-2.91.93/configure.ac	2011-09-10 16:56:05.000000000 -0500
++++ src/gnome-pilot-2.91.93/configure.ac	2011-09-26 01:39:36.287938100 -0500
+@@ -136,7 +136,6 @@ PKG_CHECK_MODULES(GNOME_PILOT,
+ 	$LIBXML_REQUIRED
+ 	$LIBGTK_REQUIRED
+ 	$DBUS_GLIB_REQUIRED
+-	$GUDEV_REQUIRED
+ 	$DBUS_REQUIRED
+ ])
+ 
+--- origsrc/gnome-pilot-2.91.93/gpilotd/gpilot-daemon.c	2011-03-20 19:55:45.000000000 -0500
++++ src/gnome-pilot-2.91.93/gpilotd/gpilot-daemon.c	2011-09-26 01:40:53.139358300 -0500
+@@ -90,10 +90,12 @@ static void load_devices_xml (void);
+ static int  known_usb_device (gchar *match_str);
+ static gboolean sync_device (GPilotDevice *device, GPilotContext *context);
+ 
++#if 0
+ /* move these into GpilotDaemonPrivate... */
+ #include <gudev/gudev.h>
+ static gboolean gpilotd_gudev_init (void);
+ GUdevClient *gudev_client = NULL;
++#endif
+ 
+ static guint visor_timeout_id = -1;
+ static guint udev_initialised = 0;
+@@ -214,6 +216,7 @@ static void usb_device_added (int vendor
+ }
+ 
+ 
++#if 0
+ static void gpilotd_gudev_handler  (GUdevClient *client, gchar *action, GUdevDevice *device,
+     gpointer user_data)
+ {
+@@ -256,6 +259,7 @@ gpilotd_gudev_init (void)
+ 	
+ 	return TRUE;
+ }
++#endif
+ 
+ 
+ static int
+@@ -2884,8 +2888,10 @@ gpilot_daemon_class_init (GpilotDaemonCl
+ static void
+ gpilot_daemon_init (GpilotDaemon *daemon)
+ {
++#if 0
+ 	gpilotd_gudev_init();
+ 	udev_initialised = 1;
++#endif
+ 	
+         daemon->priv = GPILOT_DAEMON_GET_PRIVATE (daemon);
+ 

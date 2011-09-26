@@ -1,0 +1,63 @@
+--- origsrc/gnome-pilot-2.91.93/conduits/backup/backup.conduit.in	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/backup/backup.conduit.in	2011-09-26 01:35:42.833731300 -0500
+@@ -1,5 +1,5 @@
+ <gnome-pilot-conduit version="1.0">
+-	<conduit id="gpbackup1" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/libbackup_conduit-3.0.so"/>
++	<conduit id="gpbackup1" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/cygbackup_conduit-3.0.dll"/>
+ 	<name value="Backup"/>
+ 	<conduit-attribute name="description" value="Backs up changed databases"/>
+ 	<conduit-attribute name="default-synctype" value="custom"/>
+--- origsrc/gnome-pilot-2.91.93/conduits/evolution-data-server/e-address.conduit.in	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/evolution-data-server/e-address.conduit.in	2011-09-26 01:36:00.995080100 -0500
+@@ -1,5 +1,5 @@
+ <gnome-pilot-conduit version="1.0">
+-	<conduit id="e_address_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/libeaddress_conduit-3.0.so"/>
++	<conduit id="e_address_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/cygeaddress_conduit-3.0.dll"/>
+ 	<name value="EAddress"/>
+ 	<conduit-attribute name="description" value="Synchronizes Addressbook with Evolution-Data-Server"/>
+ 	<conduit-attribute name="default-synctype" value="synchronize"/>
+--- origsrc/gnome-pilot-2.91.93/conduits/evolution-data-server/e-calendar.conduit.in	2011-09-10 16:00:00.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/evolution-data-server/e-calendar.conduit.in	2011-09-26 01:36:05.931340900 -0500
+@@ -1,5 +1,5 @@
+ <gnome-pilot-conduit version="1.0">
+-	<conduit id="e_calendar_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/libecalendar_conduit-3.0.so"/>
++	<conduit id="e_calendar_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/cygecalendar_conduit-3.0.dll"/>
+ 	<name value="ECalendar"/>
+ 	<conduit-attribute name="description" value="Synchronizes Calendar with Evolution-Data-Server"/>
+ 	<conduit-attribute name="default-synctype" value="synchronize"/>
+--- origsrc/gnome-pilot-2.91.93/conduits/evolution-data-server/e-memo.conduit.in	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/evolution-data-server/e-memo.conduit.in	2011-09-26 01:36:12.217467500 -0500
+@@ -1,5 +1,5 @@
+ <gnome-pilot-conduit version="1.0">
+-	<conduit id="e_memo_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/libememo_conduit-3.0.so"/>
++	<conduit id="e_memo_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/cygememo_conduit-3.0.dll"/>
+ 	<name value="EMemos"/>
+ 	<conduit-attribute name="description" value="Synchronizes Memo List with Evolution-Data-Server"/>
+ 	<conduit-attribute name="default-synctype" value="synchronize"/>
+--- origsrc/gnome-pilot-2.91.93/conduits/evolution-data-server/e-todo.conduit.in	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/evolution-data-server/e-todo.conduit.in	2011-09-26 01:36:17.989370800 -0500
+@@ -1,5 +1,5 @@
+ <gnome-pilot-conduit version="1.0">
+-	<conduit id="e_todo_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/libetodo_conduit-3.0.so"/>
++	<conduit id="e_todo_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/cygetodo_conduit-3.0.dll"/>
+ 	<name value="EToDo"/>
+ 	<conduit-attribute name="description" value="Synchronizes ToDo List with Evolution-Data-Server"/>
+ 	<conduit-attribute name="default-synctype" value="synchronize"/>
+--- origsrc/gnome-pilot-2.91.93/conduits/file/file.conduit.in	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/file/file.conduit.in	2011-09-26 01:36:23.981282400 -0500
+@@ -1,5 +1,5 @@
+ <gnome-pilot-conduit version="1.0">
+-	<conduit id="gpfile1" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/libfile_conduit-3.0.so"/>
++	<conduit id="gpfile1" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/cygfile_conduit-3.0.dll"/>
+ 	<name value="File"/>
+ 	<conduit-attribute name="description" value="Installs files on the PDA"/>
+ 	<conduit-attribute name="default-synctype" value="custom"/>
+--- origsrc/gnome-pilot-2.91.93/conduits/test/test.conduit.in	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/conduits/test/test.conduit.in	2011-09-26 01:36:29.546773100 -0500
+@@ -1,5 +1,5 @@
+ <gnome-pilot-conduit version="1.0">
+-	<conduit id="test_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/libtest_conduit-3.0.so"/>
++	<conduit id="test_conduit" type="shlib" location="@LIBDIR@/gnome-pilot/conduits/cygtest_conduit-3.0.dll"/>
+ 	<name value="Test"/>
+ 	<conduit-attribute name="description" value="Test conduit"/>
+      	<conduit-attribute name="default-synctype" value="synchronize"/>
