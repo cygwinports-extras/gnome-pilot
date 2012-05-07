@@ -1,0 +1,13 @@
+--- origsrc/gnome-pilot-2.91.93/Makefile.am	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/Makefile.am	2012-05-07 02:17:11.666406000 -0500
+@@ -9,8 +9,8 @@ SUBDIRS = 			\
+ 	utils			\
+ 	help
+ 
+-pkglibdir=$(libdir)/pkgconfig
+-pkglib_DATA=gnome-pilot-3.0.pc
++pkgconfigdir=$(libdir)/pkgconfig
++pkgconfig_DATA=gnome-pilot-3.0.pc
+ 
+ # ignore the scrollkeeper files on uninstall check
+ distuninstallcheck_listfiles = find . -type f -print | grep -v \
