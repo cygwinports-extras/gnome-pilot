@@ -1,0 +1,25 @@
+inherit gnome2
+
+NAME="gnome-pilot"
+VERSION=2.91.93
+RELEASE=4
+CATEGORY="GNOME"
+SUMMARY="GNOME daemon for syncing PalmOS handhelds"
+DESCRIPTION="Gnome-Pilot is a package with a daemon (gpilotd) that monitor for
+pilot connects on one or more devices (cradles/XCopilots/network). It has an
+API for creating conduits as well as a couple of default conduits, including
+one for backing up files, and one for installing files."
+
+PATCH_URI="
+	2.91.93-cygwin-conduit-shlibname.patch
+	2.91.93-no-undefined.patch
+	2.91.93-no-gudev.patch
+	2.91.93-automake.patch
+"
+
+PKG_NAMES="${PN} ${PN}-devel"
+gnome_pilot_CONTENTS="etc/ usr/bin/ usr/lib/${PN}/ usr/share/"
+gnome_pilot_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+
+# eds-conduits: incompatible with e-d-s 3.6
+CYGCONF_ARGS="--libexecdir=/usr/lib/${PN} --disable-eds-conduits"
