@@ -1,0 +1,10 @@
+--- origsrc/gnome-pilot-2.91.93/utils/make-password.c	2011-03-20 19:52:17.000000000 -0500
++++ src/gnome-pilot-2.91.93/utils/make-password.c	2013-12-24 00:53:53.517713100 -0600
+@@ -12,6 +12,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <crypt.h>
+ #include <pi-source.h>
+ #include <pi-socket.h>
+ #include <pi-dlp.h>

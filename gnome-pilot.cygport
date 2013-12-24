@@ -15,11 +15,12 @@ PATCH_URI="
 	2.91.93-no-undefined.patch
 	2.91.93-no-gudev.patch
 	2.91.93-automake.patch
+	2.91.93-Wimplicit-decls.patch
 "
 
-PKG_NAMES="${PN} ${PN}-devel"
-gnome_pilot_CONTENTS="etc/ usr/bin/ usr/lib/${PN}/ usr/share/"
+PKG_NAMES="${NAME} ${NAME}-devel"
+gnome_pilot_CONTENTS="etc/ usr/bin/ usr/lib/${NAME}/ usr/libexec/ usr/share/"
 gnome_pilot_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
 
 # eds-conduits: incompatible with e-d-s 3.6
-CYGCONF_ARGS="--libexecdir=/usr/lib/${PN} --disable-eds-conduits"
+CYGCONF_ARGS="--disable-eds-conduits"
